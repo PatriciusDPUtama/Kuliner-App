@@ -23,10 +23,37 @@
         android:id="@+id/itemProfile"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemPromo"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.PromoFragment"
         android:label="Promos"
         tools:layout="@layout/fragment_promo" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.anmp.uas_160420121_160420067_160420029.view.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/toRegister"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/backToProfile"
+            app:destination="@id/itemProfile"
+            app:popUpTo="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.anmp.uas_160420121_160420067_160420029.view.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/backToLogin"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
 </navigation>
