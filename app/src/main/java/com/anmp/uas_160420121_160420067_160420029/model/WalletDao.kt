@@ -8,11 +8,14 @@ interface WalletDao {
     fun insertAll(vararg wallet: Wallet)
 
     @Query("SELECT * FROM wallet")
-    fun selectAllReview(): List<Wallet>
+    fun selectAllWallet(): List<Wallet>
 
     @Query("SELECT * FROM wallet WHERE wid= :id")
-    fun selectReview(id:Int): Wallet
+    fun selectWallet(id:Int): Wallet
+
+    @Query("SELECT * FROM wallet WHERE iduser= :id")
+    fun selectUserWallet(id:Int): List<Wallet>
 
     @Delete
-    fun deleteReview(wallet:Wallet)
+    fun deleteWallet(wallet:Wallet)
 }

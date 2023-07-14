@@ -1,6 +1,7 @@
 package com.anmp.uas_160420121_160420067_160420029.view
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class LoginFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     // TODO: Rename and change types of parameters
+    private var trueFalse = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,29 +51,38 @@ class LoginFragment : Fragment() {
             var ePassword = view.findViewById<TextInputEditText>(R.id.loginPassword).text.toString()
             viewModel.findUser(eUsername,ePassword)
             observeViewModel()
-            val action = LoginFragmentDirections.backToProfile()
-            Navigation.findNavController(it).navigate(action)
+
+            if(trueFalse=="true")
+            {
+                val action = LoginFragmentDirections.backToProfile()
+                Navigation.findNavController(it).navigate(action)
+            }
         }
     }
 
     fun observeViewModel() {
         viewModel.loginLD.observe(viewLifecycleOwner, Observer {
             if(it != null){
-                var shared = activity?.getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
-                var editor = shared?.edit()
+                val shared: SharedPreferences = this.requireActivity()
+                    .getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
+                var editor = shared.edit()
 
-                editor?.putString(MainActivity.uUsername,it.username)
-                editor?.putString(MainActivity.uName,it.nama)
-                editor?.putInt(MainActivity.uId,it.uid)
-                editor?.apply()
+                editor.putString(MainActivity.uUsername,it.username)
+                editor.putString(MainActivity.uName,it.nama)
+                editor.putInt(MainActivity.uId,it.uid)
+                editor.apply()
 
-                Toast.makeText(this.context,"The username or/and password you entered was wrong. Please try again.",Toast.LENGTH_SHORT)
+                Toast.makeText(this.context,"You have successfully login.",Toast.LENGTH_SHORT)
+                trueFalse = "true"
+
             }
             else{
                 Toast.makeText(this.context,"The username or/and password you entered was wrong. Please try again.",Toast.LENGTH_SHORT).show()
             }
         })
     }
+
+
 
 
 }

@@ -33,6 +33,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
             Log.d("All users",db.userDao().selectAllUser().toString())
         }
     }
+
     fun findUser(username:String,password:String){
         launch {
             val db = buildUserDb(getApplication())
