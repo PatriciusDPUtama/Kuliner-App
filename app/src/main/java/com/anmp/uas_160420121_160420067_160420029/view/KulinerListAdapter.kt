@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.anmp.uas_160420121_160420067_160420029.R
 import com.anmp.uas_160420121_160420067_160420029.model.Kuliner
+import com.anmp.uas_160420121_160420067_160420029.util.loadImage
 import kotlinx.android.synthetic.main.kuliner_list_item.view.*
 
 class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
@@ -20,7 +21,9 @@ class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
     }
 
     override fun onBindViewHolder(holder: KulinerViewHolder, position: Int) {
-
+        holder.view.txtNamaKuliner.text = kulinerList[position].name
+        holder.view.txtHargaKuliner.text = kulinerList[position].harga.toString()
+        holder.view.imageViewKuliner.loadImage(kulinerList[position].photoUrl)
     }
     override fun getItemCount(): Int {return kulinerList.size}
 
