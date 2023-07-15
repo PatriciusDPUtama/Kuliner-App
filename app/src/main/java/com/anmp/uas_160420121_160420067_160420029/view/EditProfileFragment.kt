@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.fragment_register.*
  * Use the [EditProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EditProfileFragment : Fragment(),EditProfileClick {
+class EditProfileFragment : Fragment(),EditProfileLayoutInferface {
     private lateinit var viewModel: UserViewModel
     private lateinit var dataBinding:FragmentEditProfileBinding
 

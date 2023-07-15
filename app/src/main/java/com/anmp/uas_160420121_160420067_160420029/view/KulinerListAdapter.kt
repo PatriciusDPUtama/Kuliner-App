@@ -13,7 +13,7 @@ import com.anmp.uas_160420121_160420067_160420029.util.loadImage
 import kotlinx.android.synthetic.main.kuliner_list_item.view.*
 
 class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
-    : RecyclerView.Adapter<KulinerListAdapter.KulinerViewHolder>()  {
+    : RecyclerView.Adapter<KulinerListAdapter.KulinerViewHolder>(),KulinerListLayoutInterface {
     class KulinerViewHolder(var view: KulinerListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):KulinerViewHolder {
@@ -24,11 +24,13 @@ class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
 
     override fun onBindViewHolder(holder: KulinerViewHolder, position: Int) {
         holder.view.kuliner = kulinerList[position]
+        holder.view.detailListener = this
+
 //        holder.view.imageViewKuliner.loadImage(kulinerList[position].photoUrl)
-        holder.view.btnDetailKuliner.setOnClickListener {
-            val action = KulinerListFragmentDirections.actionDetailKuliner(kulinerList[position].kid)
-            Navigation.findNavController(it).navigate(action)
-        }
+//        holder.view.btnDetailKuliner.setOnClickListener {
+//            val action = KulinerListFragmentDirections.actionDetailKuliner(kulinerList[position].kid)
+//            Navigation.findNavController(it).navigate(action)
+//        }
     }
     override fun getItemCount(): Int {return kulinerList.size}
 
@@ -36,6 +38,12 @@ class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
         kulinerList.clear()
         kulinerList.addAll(newKulinerList)
         notifyDataSetChanged()
+    }
+
+    override fun onDetailKuliner(v: View) {
+        var kulID = v.tag.toString().toInt()
+        val action = KulinerListFragmentDirections.actionDetailKuliner(kulID)
+        Navigation.findNavController(v).navigate(action)
     }
 
 }

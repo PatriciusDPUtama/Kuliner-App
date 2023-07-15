@@ -7,6 +7,9 @@
         <variable
             name="kuliner"
             type="com.anmp.uas_160420121_160420067_160420029.model.Kuliner" />
+        <variable
+            name="detailListener"
+            type="com.anmp.uas_160420121_160420067_160420029.view.KulinerListLayoutInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +58,8 @@
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="12dp"
                     android:text="DETAIL"
+                    android:tag="@{kuliner.kid}"
+                    android:onClick="@{detailListener.onDetailKuliner}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtHargaKuliner" />
