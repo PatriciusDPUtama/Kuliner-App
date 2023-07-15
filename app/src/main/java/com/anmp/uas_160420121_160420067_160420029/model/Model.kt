@@ -42,6 +42,8 @@ data class Orders(
     val kulinerOrder: String?,
     @ColumnInfo(name="tanggal")
     val tanggal:String?,
+    @ColumnInfo(name = "quantity")
+    val quantity : Int?,
     @ColumnInfo(name="photo_url")
     val photo_url:String?,
 ){
@@ -56,9 +58,9 @@ data class Promo(
     @ColumnInfo(name="kulinerpromo")
     val kulinerPromo:String?,
     @ColumnInfo(name="hargaasli")
-    val hargaAsli:String?,
+    val hargaAsli:Int?,
     @ColumnInfo(name="hargadiskon")
-    val hargaDiskon:String?,
+    val hargaDiskon:Int?,
     @ColumnInfo(name="photo_url")
     val photo_url:String?,
 )

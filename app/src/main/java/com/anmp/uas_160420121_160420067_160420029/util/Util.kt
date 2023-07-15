@@ -6,10 +6,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.room.Room
 import com.anmp.uas_160420121_160420067_160420029.R
-import com.anmp.uas_160420121_160420067_160420029.model.KulinerDatabase
-import com.anmp.uas_160420121_160420067_160420029.model.OrderDatabase
-import com.anmp.uas_160420121_160420067_160420029.model.UserDatabase
-import com.anmp.uas_160420121_160420067_160420029.model.WalletDatabase
+import com.anmp.uas_160420121_160420067_160420029.model.*
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -36,6 +33,12 @@ fun buildUserDb(context: Context):UserDatabase {
 
 fun buildKulinerDb(context: Context):KulinerDatabase{
     val db = Room.databaseBuilder(context, KulinerDatabase::class.java, "newkulinerdb")
+        .build()
+    return db
+}
+
+fun buildPromoDb(context: Context):PromoDatabase{
+    val db = Room.databaseBuilder(context, PromoDatabase::class.java, "newpromodb")
         .build()
     return db
 }

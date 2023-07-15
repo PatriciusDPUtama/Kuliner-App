@@ -8,11 +8,11 @@ interface PromoDao {
     fun insertAll(vararg promo: Promo)
 
     @Query("SELECT * FROM promo")
-    fun selectAllReview(): List<Promo>
+    fun selectAllPromo(): List<Promo>
 
     @Query("SELECT * FROM promo WHERE pid= :id")
-    fun selectReview(id:Int): Promo
+    fun selectPromo(id:Int): Promo
 
     @Delete
-    fun deleteReview(promo: Promo)
+    fun deletePromo(promo: Promo)
 }

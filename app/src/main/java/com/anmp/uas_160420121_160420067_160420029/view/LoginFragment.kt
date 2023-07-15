@@ -72,7 +72,7 @@ class LoginFragment : Fragment() {
                 editor.putInt(MainActivity.uId,it.uid)
                 editor.apply()
 
-                Toast.makeText(this.context,"You have successfully login.",Toast.LENGTH_SHORT)
+                Toast.makeText(this.context,"You have successfully login.",Toast.LENGTH_SHORT).show()
                 trueFalse = "true"
 
             }
