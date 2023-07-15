@@ -7,6 +7,9 @@
         <variable
             name="kuliner"
             type="com.anmp.uas_160420121_160420067_160420029.model.Kuliner" />
+        <variable
+            name="orderListener"
+            type="com.anmp.uas_160420121_160420067_160420029.view.KulinerDetailLayoutInterface" />
     </data>
 
     <FrameLayout
@@ -87,6 +90,8 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginEnd="36dp"
                 android:text="ORDER"
+                android:tag="@{kuliner.kid}"
+                android:onClick="@{orderListener.onButtonOrderAddClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtHargaMenuDetail" />
         </androidx.constraintlayout.widget.ConstraintLayout>

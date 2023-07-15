@@ -18,7 +18,7 @@ import com.anmp.uas_160420121_160420067_160420029.util.loadImage
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.DetailKulinerViewModel
 import kotlinx.android.synthetic.main.fragment_detail_kuliner.*
 
-class DetailKulinerFragment : Fragment() {
+class DetailKulinerFragment : Fragment() ,KulinerDetailLayoutInterface{
 
     private lateinit var viewModel: DetailKulinerViewModel
     private lateinit var dataBinding:FragmentDetailKulinerBinding
@@ -27,6 +27,7 @@ class DetailKulinerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dataBinding.orderListener = this
 
         viewModel = ViewModelProvider(this).get(DetailKulinerViewModel::class.java)
         val uuid=DetailKulinerFragmentArgs.fromBundle(requireArguments()).kid
@@ -71,6 +72,12 @@ class DetailKulinerFragment : Fragment() {
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate<FragmentDetailKulinerBinding>(inflater, R.layout.fragment_detail_kuliner, container, false)
         return dataBinding.root
+    }
+
+    override fun onButtonOrderAddClick(v: View) {
+        var idKul = v.tag.toString().toInt()
+        val action = DetailKulinerFragmentDirections.actionOrder(idKul)
+        Navigation.findNavController(v).navigate(action)
     }
 
 }

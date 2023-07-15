@@ -57,6 +57,10 @@ class ProfileFragment : Fragment() {
             textUsername.text = shared.getString(MainActivity.uUsername,"Guest")
             textName.text = shared.getString(MainActivity.uName,"")
         }
+        else{
+            titleName.isVisible = true
+            titleName.text = "Guest"
+        }
 
         login.setOnClickListener{
             if(shared.getString(MainActivity.uUsername,"")!!.isNotEmpty())
