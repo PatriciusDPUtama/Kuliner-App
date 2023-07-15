@@ -118,8 +118,9 @@ class EditProfileFragment : Fragment(),EditProfileLayoutInferface {
                 val shared: SharedPreferences = this.requireActivity()
                 .getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
                 var editor = shared.edit()
+
                 editor.putString(MainActivity.uName,obj.nama)
-                editor.putString(MainActivity.uUsername,obj.password)
+                editor.putString(MainActivity.uUsername,obj.username)
                 editor.apply()
 
                 Toast.makeText(
