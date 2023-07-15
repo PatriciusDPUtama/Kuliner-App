@@ -22,14 +22,5 @@
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/promo_list_item" />
 
-            <TextView
-                android:id="@+id/txtErrorPromo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Error while loading data"
-                app:layout_constraintBottom_toBottomOf="@+id/recViewPromo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

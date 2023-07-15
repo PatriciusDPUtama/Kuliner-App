@@ -19,6 +19,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application),
     val walletLD = MutableLiveData<List<Wallet>>()
 
     fun fetch(id : Int) {
+
         launch {
             val db = buildWalletDb(getApplication())
             walletLD.postValue(db.walletDao().selectUserWallet(id))

@@ -53,9 +53,7 @@ class WalletFragment : Fragment() {
 
         txtErrorWallet.isVisible = true
 
-        var recViewWallet = view.findViewById<RecyclerView>(R.id.recViewWallet)
-        recViewWallet.layoutManager = LinearLayoutManager(context)
-        recViewWallet.adapter = walletAdapter
+
 
         if(shared.getString(MainActivity.uUsername,"")!!.isNotEmpty())
         {
@@ -63,6 +61,10 @@ class WalletFragment : Fragment() {
 
             val userid = shared.getInt(MainActivity.uId,0)
             viewModel.fetch(userid)
+
+            var recViewWallet = view.findViewById<RecyclerView>(R.id.recViewWallet)
+            recViewWallet.layoutManager = LinearLayoutManager(context)
+            recViewWallet.adapter = walletAdapter
 
             observeViewModel()
         }
@@ -72,7 +74,7 @@ class WalletFragment : Fragment() {
 
     fun observeViewModel() {
         viewModel.walletLD.observe(viewLifecycleOwner, Observer {
-            if (it.isNullOrEmpty())
+            if(it.isNullOrEmpty())
             {
                 viewModel.createWallet(shared.getInt(MainActivity.uId,0))
             }

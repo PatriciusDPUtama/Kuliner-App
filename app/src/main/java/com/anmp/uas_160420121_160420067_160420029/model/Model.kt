@@ -87,11 +87,11 @@ data class Wallet(
 @Entity
 data class User(
     @ColumnInfo(name="username")
-    val username:String?,
+    var username:String?,
     @ColumnInfo(name="password")
-    val password:String?,
+    var password:String?,
     @ColumnInfo(name="nama")
-    val nama:String?
+    var nama:String?
 ){
     @PrimaryKey(autoGenerate = true)
     var uid:Int = 0

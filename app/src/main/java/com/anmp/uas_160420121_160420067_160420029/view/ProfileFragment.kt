@@ -39,6 +39,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         titleName.isVisible = false
         titleUsername.isVisible = false
+        buttonEditProfile.isVisible = false
 
         var login = view.findViewById<FloatingActionButton>(R.id.fabLogin)
 
@@ -51,6 +52,7 @@ class ProfileFragment : Fragment() {
         {
             titleName.isVisible = true
             titleUsername.isVisible = true
+            buttonEditProfile.isVisible = true
 
             textUsername.text = shared.getString(MainActivity.uUsername,"Guest")
             textName.text = shared.getString(MainActivity.uName,"")
@@ -70,6 +72,11 @@ class ProfileFragment : Fragment() {
                 val action = ProfileFragmentDirections.toLogin()
                 Navigation.findNavController(it).navigate(action)
             }
+        }
+
+        buttonEditProfile.setOnClickListener {
+            val action = ProfileFragmentDirections.toEditProfile()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

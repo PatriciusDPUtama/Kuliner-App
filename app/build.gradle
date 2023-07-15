@@ -9,6 +9,14 @@ plugins {
 android {
     compileSdk 33
 
+    buildFeatures {
+        dataBinding true
+    }
+
+    dataBinding{
+        enabled true
+    }
+
     defaultConfig {
         applicationId "com.anmp.uas_160420121_160420067_160420029"
         minSdk 23
@@ -32,10 +40,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        dataBinding true
-    }
-
 }
 
 dependencies {

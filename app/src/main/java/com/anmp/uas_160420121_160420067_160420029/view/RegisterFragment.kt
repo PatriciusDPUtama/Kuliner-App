@@ -63,8 +63,7 @@ class RegisterFragment : Fragment() {
                         "You have successfully created an account. Please sign in.",
                         Toast.LENGTH_LONG
                     ).show()
-                    val action = RegisterFragmentDirections.backToLogin()
-                    Navigation.findNavController(it).navigate(action)
+                    Navigation.findNavController(it).popBackStack()
 
                 } else {
                     Toast.makeText(

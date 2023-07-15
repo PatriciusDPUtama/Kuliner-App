@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.anmp.uas_160420121_160420067_160420029.R
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -52,11 +53,6 @@ class LoginFragment : Fragment() {
             viewModel.findUser(eUsername,ePassword)
             observeViewModel()
 
-            if(trueFalse=="true")
-            {
-                val action = LoginFragmentDirections.backToProfile()
-                Navigation.findNavController(it).navigate(action)
-            }
         }
     }
 
@@ -73,7 +69,9 @@ class LoginFragment : Fragment() {
                 editor.apply()
 
                 Toast.makeText(this.context,"You have successfully login.",Toast.LENGTH_SHORT).show()
-                trueFalse = "true"
+
+                val action = LoginFragmentDirections.loginToHome()
+                this.findNavController().navigate(action)
 
             }
             else{
@@ -81,8 +79,5 @@ class LoginFragment : Fragment() {
             }
         })
     }
-
-
-
 
 }

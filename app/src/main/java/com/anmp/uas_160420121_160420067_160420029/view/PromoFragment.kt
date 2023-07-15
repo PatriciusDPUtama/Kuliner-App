@@ -50,12 +50,7 @@ class PromoFragment : Fragment() {
 
     fun observeViewModel() {
         viewModel.promoLD.observe(viewLifecycleOwner, Observer {
-            if (it.isNullOrEmpty())
-            {
-                viewModel.loadInitial()
-            }
             promoAdapter.updatePromoList(it as ArrayList<Promo>)
-
         })
     }
 }

@@ -49,12 +49,11 @@ class KulinerListFragment : Fragment() {
 
     fun observeViewModel() {
         viewModel.kulinerLD.observe(viewLifecycleOwner, Observer {
-            if (it.isNullOrEmpty())
+            if(it.isNullOrEmpty())
             {
                 viewModel.loadInitial()
             }
             kulinerListAdapter.updateKulinerList(it as ArrayList<Kuliner>)
-
         })
     }
 

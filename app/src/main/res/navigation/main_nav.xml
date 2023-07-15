@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/itemWallet"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.WalletFragment"
-        android:label="E-Wallet" />
+        android:label="E-Wallet"
+        tools:layout="@layout/fragment_wallet"/>
     <fragment
         android:id="@+id/itemHome"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.KulinerListFragment"
@@ -31,6 +32,9 @@
         <action
             android:id="@+id/toLogin"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/toEditProfile"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemPromo"
@@ -46,9 +50,9 @@
             android:id="@+id/toRegister"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/backToProfile"
-            app:destination="@id/itemProfile"
-            app:popUpTo="@id/itemProfile" />
+            android:id="@+id/loginToHome"
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -61,10 +65,15 @@
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.anmp.uas_160420121_160420067_160420029.view.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
         android:id="@+id/detailKulinerFragment"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.DetailKulinerFragment"
-        android:label="fragment_detail_kuliner"
-        tools:layout="@layout/fragment_detail_kuliner" >
+        android:label="Details"
+        tools:layout="@layout/fragment_detail_kuliner">
         <argument
             android:name="kid"
             app:argType="integer" />
@@ -76,7 +85,7 @@
         android:id="@+id/orderKulinerFragment"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.OrderKulinerFragment"
         android:label="fragment_order_kuliner"
-        tools:layout="@layout/fragment_order_kuliner" >
+        tools:layout="@layout/fragment_order_kuliner">
         <argument
             android:name="kid"
             app:argType="integer" />

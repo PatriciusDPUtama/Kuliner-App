@@ -19,15 +19,17 @@ class PromoViewModel (application: Application) : AndroidViewModel(application),
     val promoLD = MutableLiveData<List<Promo>>()
 
     fun refresh() {
+
         launch {
             val db = buildPromoDb(getApplication())
             promoLD.postValue(db.promoDao().selectAllPromo())
+
         }
     }
 
     fun loadInitial(){
         var arrayPromo = ArrayList<Promo>()
-        arrayPromo.add(Promo("50% Discount for item with min. Rp. 100.000","Carbonara",100000,50000,""))
+        arrayPromo.add(Promo("50% Discount for item with min. Rp. 100.000","Carbonara",100000,50000,"https://assets.bonappetit.com/photos/5a6f48f94f860a026c60fd71/1:1/w_1920,c_limit/pasta-carbonara.jpg"))
 
         launch {
             val db = buildPromoDb(getApplication())

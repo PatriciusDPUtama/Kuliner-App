@@ -25,7 +25,7 @@ class DetailKulinerFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailKulinerViewModel::class.java)
         val uuid=DetailKulinerFragmentArgs.fromBundle(requireArguments()).kid
         viewModel.fetch(uuid)
-idKuliner=uuid
+        idKuliner=uuid
         observeViewModel()
 
     }
@@ -46,9 +46,9 @@ idKuliner=uuid
 
             imageViewMenuDetail?.loadImage(viewModel.kulinerLD.value?.photoUrl,progressBarMenuDetail)
             btnOrder?.setOnClickListener {
-                val action = DetailKulinerFragmentDirections.actionOrder(idKuliner)
-                Navigation.findNavController(it).navigate(action)
-                Log.d("showvoley", idKuliner.toString())
+//                val action = DetailKulinerFragmentDirections.actionOrder(idKuliner)
+//                Navigation.findNavController(it).navigate(action)
+//                Log.d("showvoley", idKuliner.toString())
             }
 
         })

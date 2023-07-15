@@ -31,6 +31,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
         launch {
             val db = buildUserDb(getApplication())
             Log.d("All users",db.userDao().selectAllUser().toString())
+            db.userDao().selectAllUser().toString()
         }
     }
 
@@ -41,6 +42,15 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
             Log.d("login",loginLD.value.toString())
         }
     }
+
+    fun updateUser(username:String,password: String,name: String,userid:Int)
+    {
+        launch {
+            val db = buildUserDb(getApplication())
+            db.userDao().updateUser(username,password,name,userid)
+        }
+    }
+
     fun fetch(uuid:Int) {
         launch {
             val db = buildUserDb(getApplication())

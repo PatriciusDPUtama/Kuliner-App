@@ -22,6 +22,7 @@ class ListKulinerViewModel(application: Application): AndroidViewModel(applicati
     fun refresh() {
         loadingLD.postValue(true)
         kulinerLoadErrorLD.postValue( false)
+
         launch {
             val db = buildKulinerDb(getApplication())
             kulinerLD.postValue(db.kulinerDao().selectAllKuliner())
