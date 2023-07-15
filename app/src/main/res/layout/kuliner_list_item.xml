@@ -74,6 +74,16 @@
                 app:layout_constraintStart_toEndOf="@+id/imageViewKuliner"
                 app:layout_constraintTop_toBottomOf="@+id/txtNamaKuliner" />
 
+            <ProgressBar
+                android:id="@+id/progressBarKulinerList"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewKuliner"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewKuliner"
+                app:layout_constraintStart_toStartOf="@+id/imageViewKuliner"
+                app:layout_constraintTop_toTopOf="@+id/imageViewKuliner" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

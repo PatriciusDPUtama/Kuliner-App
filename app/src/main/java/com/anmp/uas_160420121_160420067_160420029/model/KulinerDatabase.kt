@@ -30,5 +30,4 @@ abstract class KulinerDatabase: RoomDatabase()  {
         }
 
     }
-
 }

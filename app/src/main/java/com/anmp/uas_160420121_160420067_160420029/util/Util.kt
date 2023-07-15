@@ -10,15 +10,15 @@ import com.anmp.uas_160420121_160420067_160420029.model.*
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-fun ImageView.loadImage(url: String?) {
+fun ImageView.loadImage(url: String?,progressBar: ProgressBar) {
     Picasso.get()
         .load(url).resize(400, 400).centerCrop()
-        .into(this, object: Callback {
+        .error(R.drawable.ic_baseline_error_24)
+        .into(this, object:Callback {
             override fun onSuccess() {
-
+                progressBar.visibility = View.GONE
             }
             override fun onError(e: Exception?) {
-
             }
         })
 

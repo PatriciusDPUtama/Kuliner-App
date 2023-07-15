@@ -12,12 +12,24 @@
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_promo.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_register.xml" value="0.18" />
-        <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_wallet.xml" value="0.22" />
+        <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_wallet.xml" value="0.1" />
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/fragment_wallet2.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/kuliner_list_item.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/promo_list_item.xml" value="0.33" />
-        <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/layout/wallet_list_item.xml" value="0.2" />
         <entry key="..\:/Users/ASUS1/Documents/NMP/MyApplication/app/src/main/res/menu/bottom_menu.xml" value="0.1675929884566054" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_detail_kuliner.xml" value="0.25" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_kuliner_detail.xml" value="0.4" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_kuliner_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_order.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_order_kuliner.xml" value="0.1" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_promo.xml" value="0.1" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/fragment_wallet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/kuliner_list_item.xml" value="0.536" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/promo_list_item.xml" value="0.23489583333333333" />
+        <entry key="..\:/Velicia_MP/UBAYA/TEKNIK_INFORMATIKA/SEMESTER_6/ANMP_160420121_160420067_160420029_UAS/app/src/main/res/layout/wallet_list_item.xml" value="0.6" />
       </map>
     </option>
   </component>

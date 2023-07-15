@@ -23,7 +23,11 @@ class KulinerListAdapter(val kulinerList:ArrayList<Kuliner>)
     override fun onBindViewHolder(holder: KulinerViewHolder, position: Int) {
         holder.view.txtNamaKuliner.text = kulinerList[position].name
         holder.view.txtHargaKuliner.text = kulinerList[position].harga.toString()
-        holder.view.imageViewKuliner.loadImage(kulinerList[position].photoUrl)
+        holder.view.imageViewKuliner.loadImage(kulinerList[position].photoUrl,holder.view.progressBarKulinerList)
+        holder.view.btnDetailKuliner.setOnClickListener {
+            val action = KulinerListFragmentDirections.actionDetailKuliner(kulinerList[position].kid)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
     override fun getItemCount(): Int {return kulinerList.size}
 

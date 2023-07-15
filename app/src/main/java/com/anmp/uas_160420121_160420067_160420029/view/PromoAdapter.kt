@@ -26,7 +26,7 @@ class PromoAdapter(val promoList:ArrayList<Promo>)
         holder.view.txtHargaAsliPromo.text = promoList[position].hargaAsli.toString()
         holder.view.txtHargaAkhirPromo.text = promoList[position].hargaDiskon.toString()
 
-        holder.view.imageViewPromo.loadImage(promoList[position].photo_url)
+        holder.view.imageViewPromo.loadImage(promoList[position].photo_url,holder.view.progressBarPromo)
     }
 
     override fun getItemCount(): Int {return promoList.size}

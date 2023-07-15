@@ -35,6 +35,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ProgressBar
+                android:id="@+id/progressBarWallet"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewWallet"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewWallet"
+                app:layout_constraintStart_toStartOf="@+id/imageViewWallet"
+                app:layout_constraintTop_toTopOf="@+id/imageViewWallet" />
+
             <TextView
                 android:id="@+id/txtNamaWallet"
                 android:layout_width="0dp"

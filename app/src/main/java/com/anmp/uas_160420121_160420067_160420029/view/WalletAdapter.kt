@@ -23,7 +23,7 @@ class WalletAdapter(val walletList:ArrayList<Wallet>)
     override fun onBindViewHolder(holder: WalletViewHolder, position: Int) {
         holder.view.txtNamaWallet.text = walletList[position].namaWallet
         holder.view.txtSaldoWallet.text = walletList[position].saldoWallet
-        holder.view.imageViewWallet.loadImage(walletList[position].photo_url)
+        holder.view.imageViewWallet.loadImage(walletList[position].photo_url,holder.view.progressBarWallet)
     }
 
     override fun getItemCount(): Int {return walletList.size}
