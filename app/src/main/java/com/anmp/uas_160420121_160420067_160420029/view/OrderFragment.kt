@@ -49,11 +49,11 @@ class OrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         shared = this.requireActivity()
             .getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
-        val userName = shared.getString(MainActivity.uName, "")
+        val userId = shared.getInt(MainActivity.uId, 0)
 
         if(shared.getString(MainActivity.uUsername,"")!!.isNotEmpty()){
             viewModel = ViewModelProvider(this).get(OrderKulinerViewModel::class.java)
-            viewModel.refresh(userName.toString())
+            viewModel.refresh(userId)
 
             var recViewOK = view.findViewById<RecyclerView>(R.id.recViewOrder)
             recViewOK.layoutManager = LinearLayoutManager(context)

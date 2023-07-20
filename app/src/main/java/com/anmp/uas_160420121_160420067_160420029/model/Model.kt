@@ -38,6 +38,8 @@ data class Review(
 
 @Entity
 data class Orders(
+    @ColumnInfo(name="iduser")
+    val idUser:Int?,
     @ColumnInfo(name="namapembeli")
     val namaPembeli:String?,
     @ColumnInfo(name="alamat")

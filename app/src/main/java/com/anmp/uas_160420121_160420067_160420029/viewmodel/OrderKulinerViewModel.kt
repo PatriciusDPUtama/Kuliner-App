@@ -25,8 +25,8 @@ class OrderKulinerViewModel(application: Application)
     val loadingLD = MutableLiveData<Boolean>()
     val orderLoadErrorLD = MutableLiveData<Boolean>()
 
-    fun addOrder(namaPembeli: String, alamat: String, namaKuliner: String, tanggal: String, qty: Int, photoUrl: String, totalHarga: Int){
-        val order = Orders(namaPembeli, alamat, namaKuliner, tanggal, qty, photoUrl, totalHarga)
+    fun addOrder(idUser: Int, namaPembeli: String, alamat: String, namaKuliner: String, tanggal: String, qty: Int, photoUrl: String, totalHarga: Int){
+        val order = Orders(idUser, namaPembeli, alamat, namaKuliner, tanggal, qty, photoUrl, totalHarga)
         launch {
             val db = buildOrderDb(getApplication())
             db.orderDao().insertAll(order)
@@ -40,23 +40,21 @@ class OrderKulinerViewModel(application: Application)
         }
     }
 
-    fun fetch(kid: Int, userId: Int) {
+    fun fetch(kid: Int) {
         launch {
-            val db1 = buildKulinerDb(getApplication())
-            val db2 = buildUserDb(getApplication())
+            val db = buildKulinerDb(getApplication())
 //            todoLD.value =  db.todoDao().selectTodo(uuid)
-            kulinerLD.postValue(db1.kulinerDao().selectKuliner(kid))
-            userLD.postValue(db2.userDao().selectUser(userId))
+            kulinerLD.postValue(db.kulinerDao().selectKuliner(kid))
         }
     }
 
-    fun refresh(name: String){
+    fun refresh(id: Int){
         loadingLD.postValue(true)
         orderLoadErrorLD.postValue( false)
 
         launch {
             val db = buildOrderDb(getApplication())
-            orderListLD.postValue(db.orderDao().selectOrderByName(name))
+            orderListLD.postValue(db.orderDao().selectOrderUser(id))
         }
     }
 

@@ -52,7 +52,7 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
             .getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
         val userid = shared.getInt(MainActivity.uId,0)
 
-        viewModel.fetch(kid, userid)
+        viewModel.fetch(kid)
         viewModel2.fetch(userid)
         idKuliner=kid
 
@@ -60,7 +60,6 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
     }
 
     var namaKuliner=""
-    var namaPembeli=""
     var harga=0
     var photoUrl=""
     var totalHarga=0
@@ -71,10 +70,6 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
             namaKuliner = it.name.toString()
             harga = it.harga.toString().toInt()
             photoUrl = it.photoUrl.toString()
-        })
-        viewModel.userLD.observe(viewLifecycleOwner, Observer{
-            dataBinding.users = it
-            namaPembeli = it.nama.toString()
         })
         viewModel2.walletLD.observe(viewLifecycleOwner, Observer {
             saldo=it.saldoWallet.toString().toInt()
@@ -88,6 +83,8 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
 
         var quantity = dataBinding.qty?.toInt()
         var alamat = dataBinding.alamat?.toString()
+        var namaPembeli = dataBinding.custName?.toString()
+
         var tanggalNow = Calendar.getInstance().time
         val formater = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         var tanggalOrder = formater.format(tanggalNow)
@@ -98,7 +95,7 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
         if(saldo < totalHarga){
             Toast.makeText(v.context, "Saldo Anda Tidak Mencukupi. Silahkan Lakukan Top Up", Toast.LENGTH_SHORT).show()
         } else {
-            viewModel.addOrder(namaPembeli, alamat.toString(), namaKuliner, tanggalOrder.toString(), quantity.toString().toInt(), photoUrl, totalHarga)
+            viewModel.addOrder(userid, namaPembeli.toString(), alamat.toString(), namaKuliner, tanggalOrder.toString(), quantity.toString().toInt(), photoUrl, totalHarga)
             viewModel2.update(userid, saldoAkhir)
 
             NotificationHelper(v.context)
