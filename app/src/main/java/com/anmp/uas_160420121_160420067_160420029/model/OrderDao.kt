@@ -13,6 +13,12 @@ interface OrderDao {
     @Query("SELECT * FROM orders WHERE oid= :id")
     fun selectOrder(id:Int): Orders
 
+    @Query("SELECT * FROM orders WHERE namapembeli= :nama")
+    fun selectOrderByName(nama:String): List<Orders>
+
+    @Query("SELECT * FROM orders WHERE oid= :id")
+    fun selectOrderById(id:Int): Orders
+
     @Delete
     fun deleteOrder(orders:Orders)
 }

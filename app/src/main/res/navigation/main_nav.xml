@@ -27,7 +27,11 @@
         android:id="@+id/itemHistory"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.OrderFragment"
         android:label="History"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/detailOrderKuliner"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.ProfileFragment"
@@ -88,7 +92,7 @@
     <fragment
         android:id="@+id/orderKulinerFragment"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.OrderKulinerFragment"
-        android:label="fragment_order_kuliner"
+        android:label="Order"
         tools:layout="@layout/fragment_order_kuliner">
         <argument
             android:name="kid"
@@ -101,8 +105,17 @@
     <fragment
         android:id="@+id/topUpFragment"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.TopUpFragment"
-        android:label="fragment_top_up"
-        tools:layout="@layout/fragment_top_up" >
+        android:label="Top Up"
+        tools:layout="@layout/fragment_top_up">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.anmp.uas_160420121_160420067_160420029.view.OrderDetailFragment"
+        android:label="Order Detail"
+        tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="id"
             app:argType="integer" />

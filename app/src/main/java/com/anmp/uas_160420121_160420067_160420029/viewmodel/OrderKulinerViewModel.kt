@@ -13,21 +13,30 @@ import com.anmp.uas_160420121_160420067_160420029.util.buildUserDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.Date
 import kotlin.coroutines.CoroutineContext
 
 class OrderKulinerViewModel(application: Application)
     : AndroidViewModel(application), CoroutineScope {
     private val job = Job()
     val orderLD = MutableLiveData<Orders>()
+    val orderListLD = MutableLiveData<List<Orders>>()
     val kulinerLD = MutableLiveData<Kuliner>()
     val userLD = MutableLiveData<User>()
+    val loadingLD = MutableLiveData<Boolean>()
+    val orderLoadErrorLD = MutableLiveData<Boolean>()
 
     fun addOrder(namaPembeli: String, alamat: String, namaKuliner: String, tanggal: String, qty: Int, photoUrl: String, totalHarga: Int){
         val order = Orders(namaPembeli, alamat, namaKuliner, tanggal, qty, photoUrl, totalHarga)
         launch {
             val db = buildOrderDb(getApplication())
             db.orderDao().insertAll(order)
+        }
+    }
+
+    fun selectOrder(oid: Int){
+        launch {
+            val db = buildOrderDb(getApplication())
+            orderLD.postValue(db.orderDao().selectOrderById(oid))
         }
     }
 
@@ -38,6 +47,16 @@ class OrderKulinerViewModel(application: Application)
 //            todoLD.value =  db.todoDao().selectTodo(uuid)
             kulinerLD.postValue(db1.kulinerDao().selectKuliner(kid))
             userLD.postValue(db2.userDao().selectUser(userId))
+        }
+    }
+
+    fun refresh(name: String){
+        loadingLD.postValue(true)
+        orderLoadErrorLD.postValue( false)
+
+        launch {
+            val db = buildOrderDb(getApplication())
+            orderListLD.postValue(db.orderDao().selectOrderByName(name))
         }
     }
 

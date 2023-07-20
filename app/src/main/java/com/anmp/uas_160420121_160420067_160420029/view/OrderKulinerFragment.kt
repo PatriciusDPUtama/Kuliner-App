@@ -18,6 +18,7 @@ import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentDetailKuli
 import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentOrderKulinerBinding
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.OrderKulinerViewModel
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.WalletViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
@@ -60,7 +61,6 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
     var namaKuliner=""
     var namaPembeli=""
     var harga=0
-    var tanggal=""
     var photoUrl=""
     var totalHarga=0
     var saldo=0
@@ -87,16 +87,22 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
 
         var quantity = dataBinding.qty?.toInt()
         var alamat = dataBinding.alamat?.toString()
-        tanggal = Calendar.getInstance().time.toString()
+        var tanggalNow = Calendar.getInstance().time
+        val formater = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        var tanggalOrder = formater.format(tanggalNow)
 
         totalHarga = harga * quantity.toString().toInt()
         var saldoAkhir = saldo-totalHarga
 
-        viewModel.addOrder(namaPembeli, alamat.toString(), namaKuliner, tanggal, quantity.toString().toInt(), photoUrl, totalHarga)
-        viewModel2.update(userid, saldoAkhir)
+        if(saldo < totalHarga){
+            Toast.makeText(v.context, "Saldo Anda Tidak Mencukupi. Silahkan Lakukan Top Up", Toast.LENGTH_SHORT).show()
+        } else {
+            viewModel.addOrder(namaPembeli, alamat.toString(), namaKuliner, tanggalOrder.toString(), quantity.toString().toInt(), photoUrl, totalHarga)
+            viewModel2.update(userid, saldoAkhir)
 
-        Toast.makeText(v.context, "Add Order Success", Toast.LENGTH_SHORT).show()
-        val action = OrderKulinerFragmentDirections.backToHome()
-        Navigation.findNavController(v).navigate(action)
+            Toast.makeText(v.context, "Add Order Success", Toast.LENGTH_SHORT).show()
+            val action = OrderKulinerFragmentDirections.backToHome()
+            Navigation.findNavController(v).navigate(action)
+        }
     }
 }
