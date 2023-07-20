@@ -107,7 +107,7 @@
                     android:layout_marginTop="15dp"
                     android:textSize="16dp"
                     android:text="You don't have an account?"
-                    android:onClick="@{loginlistener.onButtonNoAcc"
+                    android:onClick="@{loginlistener.onButtonNoAcc}"
                     app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
                     app:layout_constraintStart_toStartOf="@+id/buttonLogin"
                     app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
