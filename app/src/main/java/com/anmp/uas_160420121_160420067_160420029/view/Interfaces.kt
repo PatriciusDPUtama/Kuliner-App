@@ -30,3 +30,12 @@ interface OrderLayoutInterface{
 interface DetailOrderLayoutInterface{
     fun onButtonDetaiilOrderClick(v: View)
 }
+
+interface RegisterLayoutInterface{
+    fun onButtonRegisterClick(v:View)
+}
+
+interface LoginLayoutInterface{
+    fun onButtonLoginClick(v:View)
+    fun onButtonNoAcc(v:View)
+}

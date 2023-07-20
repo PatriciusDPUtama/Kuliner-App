@@ -23,7 +23,7 @@ class NotificationHelper(val context: Context) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(CHANNEL_ID,CHANNEL_ID,
                 NotificationManager.IMPORTANCE_DEFAULT).apply {
-                description = "Todo channel description"
+                description = "Kuliner channel description"
             }
             val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)

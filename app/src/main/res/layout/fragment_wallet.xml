@@ -19,6 +19,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,6 +40,16 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textError"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/imageViewWallet"
@@ -78,20 +89,20 @@
                         app:layout_constraintTop_toBottomOf="@+id/txtNamaWallet" />
 
                     <Button
-                        android:id="@+id/btnDetail"
+                        android:id="@+id/btnWalletTopUp"
                         style="@style/Widget.AppCompat.Button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="81dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginBottom="16dp"
-                        android:text="Top Up"
-                        android:tag="@{wallet.idUser.toString()}"
                         android:onClick="@{topuplistener.onWalletTopUp}"
+                        android:tag="@{wallet.idUser.toString()}"
+                        android:text="Top Up"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
+                        app:layout_constraintStart_toStartOf="@+id/txtSaldoWallet"
                         app:layout_constraintTop_toBottomOf="@+id/txtSaldoWallet" />
 
 
@@ -99,5 +110,6 @@
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 </layout>

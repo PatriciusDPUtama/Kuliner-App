@@ -27,7 +27,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application),
     }
 
     fun createWallet(userid : Int){
-        val wallet = Wallet(userid,"Wallet",0,"https://cdn-icons-png.flaticon.com/512/1796/1796828.png")
+        val wallet = Wallet(userid,"Wallet",100000,"https://cdn-icons-png.flaticon.com/512/1796/1796828.png")
         launch {
             val db = buildWalletDb(getApplication())
             db.walletDao().insertAll(wallet)

@@ -8,11 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.anmp.uas_160420121_160420067_160420029.R
+import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentLoginBinding
+import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentLoginBindingImpl
+import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentOrderKulinerBinding
+import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentRegisterBinding
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -24,34 +29,33 @@ import kotlinx.android.synthetic.main.fragment_login.*
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(),LoginLayoutInterface{
     private lateinit var viewModel: UserViewModel
+    private lateinit var dataBinding : FragmentLoginBinding
     // TODO: Rename and change types of parameters
-    private var trueFalse = ""
+//    private var trueFalse = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater, R.layout.fragment_login, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dataBinding.loginlistener = this
+
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.selectAll()
 
         buttonRegsiter.setOnClickListener {
-            val action = LoginFragmentDirections.toRegister()
-            Navigation.findNavController(it).navigate(action)
+
         }
 
         buttonLogin.setOnClickListener {
-            var eUsername = view.findViewById<TextInputEditText>(R.id.loginUsername).text.toString()
-            var ePassword = view.findViewById<TextInputEditText>(R.id.loginPassword).text.toString()
-            viewModel.findUser(eUsername,ePassword)
-            observeViewModel()
+
 
         }
     }
@@ -72,12 +76,23 @@ class LoginFragment : Fragment() {
 
                 val action = LoginFragmentDirections.loginToHome()
                 this.findNavController().navigate(action)
-
             }
             else{
                 Toast.makeText(this.context,"The username or/and password you entered was wrong. Please try again.",Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onButtonLoginClick(v: View) {
+        var eUsername = dataBinding.loginUsername.toString()
+        var ePassword = dataBinding.loginPassword.toString()
+        viewModel.findUser(eUsername,ePassword)
+        observeViewModel()
+    }
+
+    override fun onButtonNoAcc(v: View) {
+        val action = LoginFragmentDirections.toRegister()
+        Navigation.findNavController(v).navigate(action)
     }
 
 }

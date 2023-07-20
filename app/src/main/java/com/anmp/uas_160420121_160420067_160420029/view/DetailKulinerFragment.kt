@@ -1,5 +1,7 @@
 package com.anmp.uas_160420121_160420067_160420029.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +20,7 @@ import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentEditProfil
 import com.anmp.uas_160420121_160420067_160420029.util.loadImage
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.DetailKulinerViewModel
 import kotlinx.android.synthetic.main.fragment_detail_kuliner.*
+import kotlinx.android.synthetic.main.fragment_wallet.*
 
 class DetailKulinerFragment : Fragment() ,KulinerDetailLayoutInterface{
 
@@ -76,8 +80,20 @@ class DetailKulinerFragment : Fragment() ,KulinerDetailLayoutInterface{
 
     override fun onButtonOrderAddClick(v: View) {
         var idKul = v.tag.toString().toInt()
-        val action = DetailKulinerFragmentDirections.actionOrder(idKul)
-        Navigation.findNavController(v).navigate(action)
+
+        val shared: SharedPreferences = this.requireActivity()
+            .getSharedPreferences(MainActivity.sharedFile, Context.MODE_PRIVATE)
+
+        if(shared.getString(MainActivity.uUsername,"")!!.isNotEmpty())
+        {
+            val action = DetailKulinerFragmentDirections.actionOrder(idKul)
+            Navigation.findNavController(v).navigate(action)
+
+        }
+        else
+        {
+            Toast.makeText(this.context,"You must login to order food ! Please login first.",Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

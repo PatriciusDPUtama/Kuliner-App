@@ -64,10 +64,16 @@ class WalletFragment : Fragment(), TopUpWalletLayoutInterface {
 
         if(shared.getString(MainActivity.uUsername,"")!!.isNotEmpty())
         {
+            textError.isVisible = false
             val userid = shared.getInt(MainActivity.uId,0)
             viewModel.fetch(userid)
 
             observeViewModel()
+        }
+        else
+        {
+            textError.text = "Please login to see wallet balance"
+            btnWalletTopUp.isVisible = false
         }
 
 
