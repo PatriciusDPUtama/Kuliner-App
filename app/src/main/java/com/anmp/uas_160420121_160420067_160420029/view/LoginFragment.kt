@@ -3,6 +3,7 @@ package com.anmp.uas_160420121_160420067_160420029.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,19 +46,10 @@ class LoginFragment : Fragment(),LoginLayoutInterface{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataBinding.loginlistener = this
 
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        dataBinding.loginlistener = this
         viewModel.selectAll()
-
-        buttonRegsiter.setOnClickListener {
-
-        }
-
-        buttonLogin.setOnClickListener {
-
-
-        }
     }
 
     fun observeViewModel() {
@@ -84,8 +76,9 @@ class LoginFragment : Fragment(),LoginLayoutInterface{
     }
 
     override fun onButtonLoginClick(v: View) {
-        var eUsername = dataBinding.loginUsername.toString()
-        var ePassword = dataBinding.loginPassword.toString()
+        var eUsername = dataBinding.loginUsername.text.toString()
+        var ePassword = dataBinding.loginPassword.text.toString()
+        Log.d("Username",eUsername + " " + ePassword)
         viewModel.findUser(eUsername,ePassword)
         observeViewModel()
     }

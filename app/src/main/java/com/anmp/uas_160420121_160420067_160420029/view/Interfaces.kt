@@ -39,3 +39,8 @@ interface LoginLayoutInterface{
     fun onButtonLoginClick(v:View)
     fun onButtonNoAcc(v:View)
 }
+
+interface ProfileLayoutInterface{
+    fun onEditProfileClick(v:View)
+    fun onLogoutLoginClick(v:View)
+}
