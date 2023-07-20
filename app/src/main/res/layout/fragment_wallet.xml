@@ -1,36 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.WalletFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="wallet"
+            type="com.anmp.uas_160420121_160420067_160420029.model.Wallet" />
+        <variable
+            name="topuplistener"
+            type="com.anmp.uas_160420121_160420067_160420029.view.TopUpWalletLayoutInterface" />
+    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.WalletFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewWallet"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/wallet_list_item" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txtErrorWallet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="You must login first to see your Balance"
-            app:layout_constraintBottom_toBottomOf="@+id/recViewWallet"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewWallet"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:imageUrl="@{wallet.photo_url}"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtNamaWallet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="32dp"
+                        android:text="@{wallet.namaWallet}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtSaldoWallet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:text="@{wallet.saldoWallet.toString()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNamaWallet" />
+
+                    <Button
+                        android:id="@+id/btnDetail"
+                        style="@style/Widget.AppCompat.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="81dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Top Up"
+                        android:tag="@{wallet.idUser.toString()}"
+                        android:onClick="@{topuplistener.onWalletTopUp}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
+                        app:layout_constraintTop_toBottomOf="@+id/txtSaldoWallet" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

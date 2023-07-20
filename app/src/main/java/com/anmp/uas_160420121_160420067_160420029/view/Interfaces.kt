@@ -14,3 +14,19 @@ interface KulinerListLayoutInterface{
 interface KulinerDetailLayoutInterface{
     fun onButtonOrderAddClick(v: View)
 }
+
+interface TopUpWalletLayoutInterface{
+    fun onWalletTopUp(v:View)
+}
+
+interface TopUpLayoutInterface{
+    fun onButtonTopUpClick(v: View)
+}
+
+interface OrderLayoutInterface{
+    fun onButtonOrderClick(v: View)
+}
+
+interface DetailOrderLayoutInterface{
+    fun onButtonDetaiilOrderClick(v: View)
+}

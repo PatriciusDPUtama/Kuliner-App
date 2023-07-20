@@ -7,6 +7,9 @@
         <variable
             name="wallet"
             type="com.anmp.uas_160420121_160420067_160420029.model.Wallet" />
+        <variable
+            name="topuplistener"
+            type="com.anmp.uas_160420121_160420067_160420029.view.TopUpWalletLayoutInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,37 +41,26 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="32dp"
-                    android:scaleType="centerCrop"
                     android:imageUrl="@{wallet.photo_url}"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtNamaWallet"
+                <Button
+                    android:id="@+id/btnDetail"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:text="@{wallet.namaWallet}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtSaldoWallet"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="81dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@{wallet.saldoWallet.toString()}"
+                    android:onClick="@{topuplistener.onWalletTopUp}"
+                    android:tag="@{wallet.idUser.toString()}"
+                    android:text="Top Up"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewWallet"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNamaWallet" />
+                    app:layout_constraintStart_toEndOf="@+id/imageViewWallet" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

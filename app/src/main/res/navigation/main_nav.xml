@@ -9,7 +9,11 @@
         android:id="@+id/itemWallet"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.WalletFragment"
         android:label="E-Wallet"
-        tools:layout="@layout/fragment_wallet"/>
+        tools:layout="@layout/fragment_wallet">
+        <action
+            android:id="@+id/topUpAction"
+            app:destination="@id/topUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemHome"
         android:name="com.anmp.uas_160420121_160420067_160420029.view.KulinerListFragment"
@@ -88,6 +92,19 @@
         tools:layout="@layout/fragment_order_kuliner">
         <argument
             android:name="kid"
+            app:argType="integer" />
+        <action
+            android:id="@+id/backToHome"
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.anmp.uas_160420121_160420067_160420029.view.TopUpFragment"
+        android:label="fragment_top_up"
+        tools:layout="@layout/fragment_top_up" >
+        <argument
+            android:name="id"
             app:argType="integer" />
     </fragment>
 </navigation>

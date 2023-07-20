@@ -16,6 +16,12 @@ interface WalletDao {
     @Query("SELECT * FROM wallet WHERE iduser= :id")
     fun selectUserWallet(id:Int): List<Wallet>
 
+    @Query("UPDATE wallet SET saldowallet = :saldo WHERE iduser = :id")
+    fun updateWalletTopUp(id:Int, saldo:Int)
+
+    @Query("UPDATE wallet SET saldowallet=saldowallet-:saldo WHERE iduser=:id")
+    fun updateWallet(id:Int, saldo:String)
+
     @Delete
     fun deleteWallet(wallet:Wallet)
 }

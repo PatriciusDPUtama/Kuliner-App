@@ -16,27 +16,29 @@ import kotlin.coroutines.CoroutineContext
 
 class WalletViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     private val job = Job()
-    val walletLD = MutableLiveData<List<Wallet>>()
+    val walletLD = MutableLiveData<Wallet>()
 
     fun fetch(id : Int) {
 
         launch {
             val db = buildWalletDb(getApplication())
-            walletLD.postValue(db.walletDao().selectUserWallet(id))
+            walletLD.postValue(db.walletDao().selectWallet(id))
         }
     }
 
     fun createWallet(userid : Int){
-        var arrayWallet = ArrayList<Wallet>()
-        arrayWallet.add(Wallet(userid,"OVO","0","https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-logo/1fac829304066a942f3c5fd81434fae3.jpg"))
-        arrayWallet.add(Wallet(userid,"Shopee Pay","0","https://blog.bangbeli.com/wp-content/uploads/2023/01/logo-sopipey.jpg"))
+        val wallet = Wallet(userid,"Wallet",1000000,"https://cdn-icons-png.flaticon.com/512/1796/1796828.png")
         launch {
             val db = buildWalletDb(getApplication())
-            for(wallet in arrayWallet)
-            {
-                db.walletDao().insertAll(wallet)
-            }
-            walletLD.postValue(db.walletDao().selectUserWallet(userid))
+            db.walletDao().insertAll(wallet)
+            walletLD.postValue(db.walletDao().selectWallet(userid))
+        }
+    }
+
+    fun update(id: Int, saldo: Int){
+        launch {
+            val db = buildWalletDb(getApplication())
+            db.walletDao().updateWalletTopUp(id, saldo)
         }
     }
 

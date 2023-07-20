@@ -38,6 +38,10 @@ data class Review(
 
 @Entity
 data class Orders(
+    @ColumnInfo(name="namapembeli")
+    val namaPembeli:String?,
+    @ColumnInfo(name="alamat")
+    val alamat:String?,
     @ColumnInfo(name="kulinerorder")
     val kulinerOrder: String?,
     @ColumnInfo(name="tanggal")
@@ -46,6 +50,8 @@ data class Orders(
     val quantity : Int?,
     @ColumnInfo(name="photo_url")
     val photo_url:String?,
+    @ColumnInfo(name="total_harga")
+    val total_harga:Int?,
 ){
     @PrimaryKey(autoGenerate = true)
     var oid:Int = 0
@@ -76,7 +82,7 @@ data class Wallet(
     @ColumnInfo(name="namawallet")
     val namaWallet:String?,
     @ColumnInfo(name="saldowallet")
-    val saldoWallet:String?,
+    var saldoWallet:Int?,
     @ColumnInfo(name="photo_url")
     val photo_url:String?,
 ){
