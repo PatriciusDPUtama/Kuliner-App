@@ -18,6 +18,7 @@ import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentOrderKulin
 import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentTopUpBinding
 import com.anmp.uas_160420121_160420067_160420029.databinding.WalletListItemBinding
 import com.anmp.uas_160420121_160420067_160420029.model.Wallet
+import com.anmp.uas_160420121_160420067_160420029.util.NotificationHelper
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.DetailKulinerViewModel
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.WalletViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -89,10 +90,14 @@ class TopUpFragment : Fragment(), TopUpLayoutInterface {
             perhitungan = saldo+tambahan.toString().toInt()
 
             viewModel.update(userid,perhitungan)
+
+            NotificationHelper(v.context)
+            .createNotification("Top Up Notification",
+                "Saldo Berhasil Tertambah Sebesar $tambahan")
+
             Toast.makeText(v.context, "Top Up Success", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(v).popBackStack()
         }
-        Log.d("CEK", tambahan.toString())
     }
 
 }

@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import com.anmp.uas_160420121_160420067_160420029.R
 import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentDetailKulinerBinding
 import com.anmp.uas_160420121_160420067_160420029.databinding.FragmentOrderKulinerBinding
+import com.anmp.uas_160420121_160420067_160420029.util.NotificationHelper
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.OrderKulinerViewModel
 import com.anmp.uas_160420121_160420067_160420029.viewmodel.WalletViewModel
 import java.text.SimpleDateFormat
@@ -99,6 +100,10 @@ class OrderKulinerFragment : Fragment(), OrderLayoutInterface {
         } else {
             viewModel.addOrder(namaPembeli, alamat.toString(), namaKuliner, tanggalOrder.toString(), quantity.toString().toInt(), photoUrl, totalHarga)
             viewModel2.update(userid, saldoAkhir)
+
+            NotificationHelper(v.context)
+                .createNotification("Order Notification",
+                    "Pembelian Sebesar $totalHarga Berhasil")
 
             Toast.makeText(v.context, "Add Order Success", Toast.LENGTH_SHORT).show()
             val action = OrderKulinerFragmentDirections.backToHome()
